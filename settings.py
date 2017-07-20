@@ -93,10 +93,10 @@ ANALYTICS_ID            = ''
 DATA_SOURCE_BUDGET      = ''
 
 # Setup Data Source Population link
-DATA_SOURCE_POPULATION  = ''
+DATA_SOURCE_POPULATION  = 'http://www.ine.es/jaxiT3/Tabla.htm?t=2905&L=0'
 
 # Setup Data Source Inflation link
-DATA_SOURCE_INFLATION   = ''
+DATA_SOURCE_INFLATION   = 'http://www.ine.es/jaxiT3/Tabla.htm?t=22350&L=0'
 
 # Setup Main Entity Web Url
 MAIN_ENTITY_WEB_URL     = ''
