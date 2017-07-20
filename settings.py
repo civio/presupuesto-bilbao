@@ -90,7 +90,7 @@ FACEBOOK_ID             = ''
 ANALYTICS_ID            = ''
 
 # Setup Data Source Budget link
-DATA_SOURCE_BUDGET      = ''
+DATA_SOURCE_BUDGET      = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000012541&language=es&pageid=3000012541&pagename=Bilbaonet%2FPage%2FBIO_detallePagina'
 
 # Setup Data Source Population link
 DATA_SOURCE_POPULATION  = 'http://www.ine.es/jaxiT3/Tabla.htm?t=2905&L=0'
