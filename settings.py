@@ -122,7 +122,7 @@ COOKIES_URL             = ''
 # ----------------------
 
 # Programmes to feature as example in home page.
-FEATURED_PROGRAMMES = ['1621', '1710', '3380', '2410', '3110']
+FEATURED_PROGRAMMES = ['1631', '1534', '1321', '1514', '3371', '3341', '2315', '2411']
 
 # Number of programmes to feature in home page. Default: 3
 # NUMBER_OF_FEATURED_PROGRAMMES = 3
@@ -131,36 +131,9 @@ FEATURED_PROGRAMMES = ['1621', '1710', '3380', '2410', '3110']
 # Overview Settings
 # ----------------------
 
-OVERVIEW_INCOME_NODES = [
-                          {
-                            'nodes': [['11', '113']],
-                            'label': 'Impuesto a bienes inmuebles de naturaleza urbana',
-                            'link_id': '11'
-                          },
-                          {
-                            'nodes': [['30', '300']],
-                            'label': 'Servicio de abastecimiento de agua',
-                            'link_id': '30'
-                          },
-                          '42', '45',
-                          {
-                            'nodes': [['29', '293']],
-                            'label': 'Impuesto general indirecto canario (IGIC)',
-                            'link_id': '29'
-                          },
-                          {
-                            'nodes': [['11', '115']],
-                            'label': 'Impuesto sobre vehículos de tracción mecánica',
-                            'link_id': '11'
-                          },
-                          {
-                            'nodes': [['30', '302']],
-                            'label': 'Servicio de recogida de basuras',
-                            'link_id': '30'
-                          },
-                        ]
+OVERVIEW_INCOME_NODES = ['42', '11', '31', '13']
 
-OVERVIEW_EXPENSE_NODES = ['16', '13', '92', '15', '33', '23', '34', '17', '32']
+OVERVIEW_EXPENSE_NODES = ['15', '16', '92', '13', '23', '44', '33']
 
 # How much padding between Sankey nodes. Default: 10 (Optional)
 # Note: higher values will result in a more 'curvy accordion'.
