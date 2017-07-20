@@ -78,10 +78,7 @@ SHOW_TAX_RECEIPT = True
 # Supported languages. Default: ('es', 'Castellano')
 LANGUAGES = (
   ('es', 'Castellano'),
-  ('en', 'English'),
-  # ('ca', 'Catal&agrave;'),
-  # ('eu', 'Euskera'),
-  # ('gl', 'Galego'),
+  ('eu', 'Euskera'),
 )
 
 # Facebook Aplication ID used in social_sharing temaplate. Default: ''
