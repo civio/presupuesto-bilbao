@@ -12,7 +12,7 @@ MAIN_ENTITY_NAME = 'Bilbao'
 BUDGET_LOADER = 'BilbaoBudgetLoader'
 
 # Theme Payments Loader class name. Default: 'PaymentsLoader'
-PAYMENTS_LOADER = 'BilbaoPaymentsLoader'
+# PAYMENTS_LOADER = 'BilbaoPaymentsLoader'
 
 
 # Show / hide Settings
