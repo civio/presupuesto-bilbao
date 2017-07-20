@@ -99,13 +99,13 @@ DATA_SOURCE_POPULATION  = 'http://www.ine.es/jaxiT3/Tabla.htm?t=2905&L=0'
 DATA_SOURCE_INFLATION   = 'http://www.ine.es/jaxiT3/Tabla.htm?t=22350&L=0'
 
 # Setup Main Entity Web Url
-MAIN_ENTITY_WEB_URL     = ''
+MAIN_ENTITY_WEB_URL     = 'http://www.bilbao.eus/'
 
 # Setup Main Entity Legal Url (if empty we hide the link)
-MAIN_ENTITY_LEGAL_URL   = ''
+MAIN_ENTITY_LEGAL_URL   = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000106349&language=es&pageid=3000106349&pagename=Bilbaonet%2FPage%2FBIO_contenidoFinal'
 
 # Setup Main Entity Legal Url (if empty we hide the link)
-MAIN_ENTITY_PRIVACY_URL = ''
+MAIN_ENTITY_PRIVACY_URL = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000106346&language=es&pageid=3000106346&pagename=Bilbaonet%2FPage%2FBIO_contenidoFinal'
 
 # External URL for Cookies Policy (if empty we use out template page/cookies.html)
 COOKIES_URL             = ''
