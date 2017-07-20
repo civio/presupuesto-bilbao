@@ -9,66 +9,87 @@ import re
 class BilbaoBudgetLoader(SimpleBudgetLoader):
 
     def parse_item(self, filename, line):
-        # Programme codes have changed in 2015, due to new laws. Since the application expects a code-programme
-        # mapping to be constant over time, we are forced to amend budget data prior to 2015.
-        # See https://github.com/dcabo/presupuestos-aragon/wiki/La-clasificaci%C3%B3n-funcional-en-las-Entidades-Locales
+        # Although there's no change in the programme structure, there are some programmes in the 2015 budget that
+        # change their code in later years
         programme_mapping = {
-            # old programme: new programme
-            '1340': '1350',     # Protección Civil
-            '1350': '1360',     # Extinción de incendios
-            '1550': '1532',     # Vías públicas
-            '1620': '1621',     # Recogida de residuos
-            '3130': '3110',     # Protección de la salud
-            '3210': '3219',     # Educación preescolar y primaria
-            '3220': '3229',     # Enseñanza secundaria
-            '3230': '3239',     # Promoción educativa
-            '3240': '3260',     # Servicios complementarios de educación
-            '3340': '3341',     # Promoción cultural
-            '4410': '4411',     # Promoción, mantenimiento y desarrollo del transporte
-            '4940': '4911',     # URBAN- Arona 2007-2013
-        }
-        programme_mapping_2015 = {
-            '3340': '3341',     # Promoción cultural
+        # old programme: new programme
+            '2371':'2318',  # Actividades de ocio para juventud -> Promoción y servicios a la juventud/infancia
+            '2372':'2318',  # Actividades de ocio para infancia -> Promoción y servicios a la juventud/infancia
+            '3391':'3344',  # Bandas municipales de música -> Bandas municipales de música
+            '3291':'3262',  # Enseñanza de música -> Enseñanza de música
+            '1751':'1723',  # Parques forestales -> Mejora del medio ambiente
+            '1691':'1632',  # Servicios generales del bienestar comunitario -> Servicios generales del bienestar comunitario
+            '2391':'2319',  # Cooperación al desarrollo -> Ayudas a la cooperación desarrollo internacional
         }
 
-        # Some dirty lines in input data
-        if line[0]=='':
-            return None
+        # Institutional code (all income goes to the root node)
+        ic_code = '000'
 
+        # Type of data
         is_expense = (filename.find('gastos.csv')!=-1)
         is_actual = (filename.find('/ejecucion_')!=-1)
-        if is_expense:
-            # The input data combines functional and economic codes in a very unusual way
-            match = re.search('^ *(\d+) +(\d+) *', line[0])
-            # We got 3- or 4- digit functional codes as input, so add a trailing zero
-            fc_code = match.group(1).ljust(4, '0')
-            ec_code = match.group(2)
 
-            # For years before 2015 we check whether we need to amend the programme code
+        # Expenses
+        if is_expense:
+            # Functional code
+            fc_code = line[2].strip()
+
+            # For year 2015 we check whether we need to amend the programme code
             year = re.search('municipio/(\d+)/', filename).group(1)
-            if int(year) < 2015:
+            if int(year) == 2015:
                 fc_code = programme_mapping.get(fc_code, fc_code)
-            elif int(year) == 2015:
-                fc_code = programme_mapping_2015.get(fc_code, fc_code)
+
+            # Economic code
+            full_ec_code = line[4].strip()
+
+            # On economic codes we get the first three digits
+            ec_code = full_ec_code[:3]
+
+            # Item numbers are the last two digits from the economic codes (fourth and fifth digit)
+            item_number = full_ec_code[-2:]
+
+            # Description
+            description = line[5].strip()
+
+            # Parse amount
+            amount = line[12 if is_actual else 9].strip()
+            amount = self._parse_amount(amount)
 
             return {
                 'is_expense': True,
                 'is_actual': is_actual,
                 'fc_code': fc_code,
-                'ec_code': ec_code[:-2],        # First three digits (everything but last two)
-                'ic_code': '000',
-                'item_number': ec_code[-2:],    # Last two digits
-                'description': line[1],
-                'amount': self._parse_amount(line[5 if is_actual else 2])
+                'ec_code': ec_code,
+                'ic_code': ic_code,
+                'item_number': item_number,
+                'description': description,
+                'amount': amount
             }
 
+        # Income
         else:
+            # Economic code
+            full_ec_code = line[0].strip()
+
+            # On economic codes we get the first three digits
+            ec_code = full_ec_code[:3]
+
+            # Item numbers are the last two digits from the economic codes (fourth and fifth digit)
+            item_number = full_ec_code[-2:]
+
+            # Description
+            description = line[1].strip()
+
+            # Parse amount
+            amount = line[5 if is_actual else 2].strip()
+            amount = self._parse_amount(amount)
+
             return {
                 'is_expense': False,
                 'is_actual': is_actual,
-                'ec_code': line[0][:-2],        # First three digits
-                'ic_code': '000',               # All income goes to the root node
-                'item_number': line[0][-2:],    # Fourth and fifth digit; careful, there's trailing dirt
-                'description': line[1],
-                'amount': self._parse_amount(line[5 if is_actual else 2])
+                'ec_code': ec_code,
+                'ic_code': ic_code,
+                'item_number': item_number,
+                'description': description,
+                'amount': amount
             }
