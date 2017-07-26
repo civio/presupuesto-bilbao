@@ -1,1 +1,13 @@
 @import "theme-variables";
+
+
+#menu-lang ul li{
+  border-color: $brand-secondary;
+}
+#menu-lang ul li input[type=submit]{
+  color: $brand-secondary;
+}
+
+.home-content .options .option>div .icon{
+  color: mix( $brand-secondary, white, 50% );
+}
