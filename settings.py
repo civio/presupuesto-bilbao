@@ -108,7 +108,7 @@ MAIN_ENTITY_LEGAL_URL   = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000106
 MAIN_ENTITY_PRIVACY_URL = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000106346&language=es&pageid=3000106346&pagename=Bilbaonet%2FPage%2FBIO_contenidoFinal'
 
 # External URL for Cookies Policy (if empty we use out template page/cookies.html)
-COOKIES_URL             = ''
+COOKIES_URL             = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000106349&language=es&pageid=3000106349&pagename=Bilbaonet%2FPage%2FBIO_contenidoFinal'
 
 # We can define additional URLs applicable only to the theme. These will get added
 # to the project URL patterns list.
