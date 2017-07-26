@@ -83,11 +83,11 @@ LANGUAGES = (
 
 # Facebook Aplication ID used in social_sharing temaplate. Default: ''
 # In order to get the ID create an app in https://developers.facebook.com/
-FACEBOOK_ID             = ''
+FACEBOOK_ID             = '1466820763382091'
 
 # Google Analytics ID. Default: ''
 # In order to get the ID create a Google Analytics Acount in https://analytics.google.com/analytics/web/
-ANALYTICS_ID            = ''
+ANALYTICS_ID            = 'UA-28946840-36'
 
 # Setup Data Source Budget link
 DATA_SOURCE_BUDGET      = 'http://www.bilbao.eus/cs/Satellite?c=Page&cid=3000012541&language=es&pageid=3000012541&pagename=Bilbaonet%2FPage%2FBIO_detallePagina'
