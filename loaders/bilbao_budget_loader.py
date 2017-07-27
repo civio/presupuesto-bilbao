@@ -11,18 +11,17 @@ class BilbaoBudgetLoader(SimpleBudgetLoader):
     def parse_item(self, filename, line):
         # Although there's no change in the programme structure, there are some programmes in the 2015 budget that
         # change their code in later years
-        programme_mapping = {
+        programme_mapping_2015 = {
         # old programme: new programme
             '2371':'2318',  # Actividades de ocio para juventud -> Promoción y servicios a la juventud/infancia
             '2372':'2318',  # Actividades de ocio para infancia -> Promoción y servicios a la juventud/infancia
             '3391':'3344',  # Bandas municipales de música -> Bandas municipales de música
             '3291':'3262',  # Enseñanza de música -> Enseñanza de música
-            '1751':'1723',  # Parques forestales -> Mejora del medio ambiente
             '1691':'1632',  # Servicios generales del bienestar comunitario -> Servicios generales del bienestar comunitario
             '2391':'2319',  # Cooperación al desarrollo -> Ayudas a la cooperación desarrollo internacional
         }
 
-        # Institutional code (all income goes to the root node)
+        # Institutional code (all income go to the root node, and all expenses come from the root node too)
         ic_code = '000'
 
         # Type of data
@@ -37,7 +36,7 @@ class BilbaoBudgetLoader(SimpleBudgetLoader):
             # For year 2015 we check whether we need to amend the programme code
             year = re.search('municipio/(\d+)/', filename).group(1)
             if int(year) == 2015:
-                fc_code = programme_mapping.get(fc_code, fc_code)
+                fc_code = programme_mapping_2015.get(fc_code, fc_code)
 
             # Economic code
             full_ec_code = line[4].strip()
