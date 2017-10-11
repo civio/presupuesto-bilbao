@@ -11,3 +11,24 @@
 .home-content .options .option>div .icon{
   color: mix( $brand-secondary, white, 50% );
 }
+
+.navbar-default .navbar-nav{
+
+  > li > a.icon-home{
+    text-indent: -9999px;
+    background-image: url(../assets/home-icon.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  @media (min-width: $grid-float-breakpoint) {
+
+    > li{
+      width: 95% / $dvmi-menu-length;
+
+      &.page-home{
+        width: 5%;
+      }
+    }
+  }
+}
